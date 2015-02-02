@@ -11,6 +11,8 @@ class Aluno(models.Model):
     """
     nome_aluno = models.CharField(max_length=200)
     data_nascimento = models.DateField('data de nascimento')
+    email = models.EmailField()
+    telefone = models.CharField(max_length=25)
 
     def __unicode__(self):
         """ Retorna o nome do aluno quando pedirmos o objeto """
@@ -27,22 +29,15 @@ class Turma(models.Model):
     """
     nome_diciplina = models.CharField(max_length=200)
     professor = models.CharField(max_length=200)
+    email_professor = models.EmailField()
+    telefone_professor = models.CharField(max_length=20)
     monitor = models.CharField(max_length=200)
+    email_monitor = models.EmailField()
+    telefone_monitor = models.CharField(max_length=20)
+    local = models.CharField(max_length=200)
     data_ofertada = models.DateField('data que sera ofertada')
-    alunos_matriculados = Aluno()
+    alunos_matriculados = models.ManyToManyField(Aluno)
 
     def __unicode__(self):
         """ Retorna o nome da diciplina quando o objeto for pedido """
         return self.nome_diciplina
-
-
-class Usuario(models.Model):
-    """ Usuario eh a base de dados dos usuario do sistema
-    """
-    nome = models.CharField(max_length=200)
-    login = models.CharField(max_length=200)
-    senha = models.CharField(max_length=200)
-
-    def __unicode__(self):
-        """ Retorna nome quando pedirmos o objeto """
-        return self.nome

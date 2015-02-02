@@ -1,7 +1,7 @@
 """ configura pagina de administrador do django """
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from crud.models import Aluno, Turma, Usuario
+from crud.models import Aluno, Turma
 # Register your models here.
 
 
@@ -14,4 +14,3 @@ class QuestionAdmin(admin.ModelAdmin):
 
 admin.site.register(Aluno)
 admin.site.register(Turma, QuestionAdmin)
-admin.site.register(Usuario)
